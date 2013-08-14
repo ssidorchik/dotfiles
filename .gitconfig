@@ -17,3 +17,13 @@
   	added = yellow
   	changed = green
   	untracked = cyan
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[dofftool]
+	prompt = false
+[difftool]
+	prompt = false
+[alias]
+	df = difftool
