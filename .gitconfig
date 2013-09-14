@@ -4,6 +4,7 @@
 	default = simple
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore_global
 [diff]
 	tool = vimdiff
 [dofftool]
@@ -11,4 +12,12 @@
 [difftool]
 	prompt = false
 [alias]
+    st = status
+    co = checkout
+    ci = commit
+    mt = mergetool
+    st = status
+    co = checkout
+    ci = commit
+    mt = mergetool
 	df = difftool
