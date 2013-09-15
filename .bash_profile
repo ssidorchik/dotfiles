@@ -22,13 +22,25 @@ export PATH
 PATH="/usr/local/share/npm/bin:${PATH}"
 export PATH
 
-function color_my_prompt {
-    local __user_and_host="\[\033[01;32m\]\u@\h"
-    local __cur_location="\[\033[01;34m\]\w"
-    local __git_branch_color="\[\033[31m\]"
-    local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-    local __prompt_tail="\[\033[35m\]$"
-    local __last_color="\[\033[00m\]"
-    export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+function color_prompt {
+    MAGENTA="\[\033[0;35m\]"
+    YELLOW="\[\033[0;33m\]"
+    BLUE="\[\033[34m\]"
+    LIGHT_GRAY="\[\033[0;37m\]"
+    CYAN="\[\033[0;36m\]"
+    GREEN="\[\033[0;32m\]"
+    GIT_PS1_SHOWDIRTYSTATE=true
+
+    export PS1=$LIGHT_GRAY"\u@\h"$BLUE" \w"'$(
+        if [[ $(__git_ps1) =~ \*\)$ ]]
+        # a file has been modified but not added
+        then echo "'$YELLOW'"$(__git_ps1 " (%s)")
+        elif [[ $(__git_ps1) =~ \+\)$ ]]
+        # a file has been added, but not commited
+        then echo "'$MAGENTA'"$(__git_ps1 " (%s)")
+        # the state is clean, changes are commited
+        else echo "'$CYAN'"$(__git_ps1 " (%s)")
+        fi)'$GREEN" "
 }
-color_my_prompt
+
+color_prompt
