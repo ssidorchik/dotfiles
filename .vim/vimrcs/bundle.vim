@@ -13,9 +13,9 @@ NeoBundleFetch "Shougo/neobundle.vim"
 " => Include plugins
 " """"""""""""""""""""""""""""
 NeoBundle "altercation/vim-colors-solarized"
-NeoBundle "kien/ctrlp"
+NeoBundle "kien/ctrlp.vim"
 NeoBundle "scrooloose/nerdtree"
-NeoBundle "scrooloose/nerdtcommenter"
+NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "tpope/vim-fugitive"
 
 
