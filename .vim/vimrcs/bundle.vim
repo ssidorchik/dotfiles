@@ -18,6 +18,8 @@ NeoBundle "scrooloose/nerdtree"
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "tpope/vim-fugitive"
 
+NeoBundleCheck
+
 
 """ Plugins configuration """"
 
@@ -46,8 +48,3 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
 call togglebg#map("<F5>")
-
-
-filetype plugin indent on
-
-NeoBundleCheck
