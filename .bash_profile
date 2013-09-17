@@ -5,8 +5,15 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 # Tell grep to highlight matches
 export GREP_OPTIONS='--color=auto'
 
-source /usr/local/etc/bash_completion.d/git-completion.bash
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+include () {
+    [[ -f "$1" ]] && source "$1"
+}
+
+include /usr/local/etc/bash_completion.d/git-completion.bash
+include /usr/local/etc/bash_completion.d/git-prompt.sh
+
+include /usr/share/bash-completion/completions/git
+include /usr/lib/git-core/git-sh-prompt
 
 PATH="/usr/local/bin:${PATH}"
 export PATH
