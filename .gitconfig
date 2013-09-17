@@ -14,10 +14,7 @@
 [alias]
     st = status
     co = checkout
-    ci = commit
+	ci = commit
+	su = submodule update
     mt = mergetool
-    st = status
-    co = checkout
-    ci = commit
-    mt = mergetool
-	df = difftool
+    
