@@ -17,6 +17,9 @@ NeoBundle "kien/ctrlp.vim"
 NeoBundle "scrooloose/nerdtree"
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "tpope/vim-fugitive"
+NeoBundle "groenewege/vim-less"
+NeoBundle "slim-template/vim-slim"
+NeoBundle "tpope/vim-rails"
 
 NeoBundleCheck
 

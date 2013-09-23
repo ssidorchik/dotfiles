@@ -22,6 +22,10 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
+" Remaping Esc to normal mode
+inoremap <A-i> <Esc>
+vnoremap <A-i> <Esc>
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
