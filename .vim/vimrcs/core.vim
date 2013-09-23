@@ -59,8 +59,18 @@ set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
 " Set shortcuts for tabs navigation and manipulations
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
-nnoremap <silent> <A-h> :tabmove -1<CR>
-nnoremap <silent> <A-l> :tabmove +1<CR>
+nnoremap <silent> <C-j> :tabmove -1<CR>
+nnoremap <silent> <C-k> :tabmove +1<CR>
+
+" Set shortcuts for windows navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+nnoremap <leader>c <C-w>c
+nnoremap <leader>o :copen
+
 
 " Setting up the usage of Alt/Option key
 " (do not forget to enable 'Use option as meta key' in OS X terminal preferences)
