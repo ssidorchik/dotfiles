@@ -49,8 +49,8 @@ set hlsearch
 set incsearch 
 
 " Tabindent configuration
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " Display hidden characters
@@ -68,7 +68,7 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-nnoremap <leader>c <C-w>c
+nnoremap <leader>x <C-w>c
 nnoremap <leader>o :copen
 
 

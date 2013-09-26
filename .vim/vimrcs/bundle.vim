@@ -20,6 +20,7 @@ NeoBundle "tpope/vim-fugitive"
 NeoBundle "groenewege/vim-less"
 NeoBundle "slim-template/vim-slim"
 NeoBundle "tpope/vim-rails"
+NeoBundle "ap/vim-css-color"
 
 NeoBundleCheck
 
