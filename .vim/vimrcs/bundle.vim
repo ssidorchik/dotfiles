@@ -21,6 +21,7 @@ NeoBundle "groenewege/vim-less"
 NeoBundle "slim-template/vim-slim"
 NeoBundle "tpope/vim-rails"
 NeoBundle "ap/vim-css-color"
+NeoBundle "907th/vim-auto-save"
 
 NeoBundleCheck
 
@@ -36,11 +37,13 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 
+
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 20
+
 
 """""""""""""""""""""""""""""
 " => Solarized Color Scheme
@@ -52,3 +55,18 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
 call togglebg#map("<F5>")
+
+
+""""""""""""""""""""""""""""""
+" => Fugitive
+""""""""""""""""""""""""""""""
+map <leader>gc :Gread<CR>
+map <leader>ga :Gwrite<CR>
+map <leader>gr :Gremove<CR>
+
+
+""""""""""""""""""""""""""""""
+" => Auto Save
+""""""""""""""""""""""""""""""
+let g:auto_save = 1
+let g:auto_save_no_updatetime = 1

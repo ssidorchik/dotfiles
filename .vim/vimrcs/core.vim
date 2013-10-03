@@ -27,7 +27,7 @@ inoremap <A-i> <Esc>
 vnoremap <A-i> <Esc>
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -69,7 +69,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 nnoremap <leader>x <C-w>c
-nnoremap <leader>o :copen
+nnoremap <leader>o :copen<CR>
 
 
 " Setting up the usage of Alt/Option key
