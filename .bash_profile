@@ -15,6 +15,8 @@ include /usr/local/etc/bash_completion.d/git-prompt.sh
 include /usr/share/bash-completion/completions/git
 include /usr/lib/git-core/git-sh-prompt
 
+include ~/.bash_aliases
+
 PATH="/usr/local/bin:${PATH}"
 export PATH
 
