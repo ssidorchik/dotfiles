@@ -22,6 +22,7 @@ NeoBundle "slim-template/vim-slim"
 NeoBundle "tpope/vim-rails"
 NeoBundle "ap/vim-css-color"
 NeoBundle "907th/vim-auto-save"
+NeoBundle "bling/vim-airline"
 
 NeoBundleCheck
 
@@ -70,3 +71,11 @@ map <leader>gr :Gremove<CR>
 """"""""""""""""""""""""""""""
 let g:auto_save = 1
 let g:auto_save_no_updatetime = 1
+
+
+""""""""""""""""""""""""""""""
+" => Airline
+""""""""""""""""""""""""""""""
+set noshowmode
+set laststatus=2
+let g:airline_theme = 'solarized'
