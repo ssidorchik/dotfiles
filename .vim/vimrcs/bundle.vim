@@ -23,6 +23,8 @@ NeoBundle "tpope/vim-rails"
 NeoBundle "ap/vim-css-color"
 NeoBundle "907th/vim-auto-save"
 NeoBundle "bling/vim-airline"
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle "wookiehangover/jshint.vim"
 
 NeoBundleCheck
 
@@ -44,7 +46,7 @@ map <leader>nf :NERDTreeFind<cr>
 """"""""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_height = 20
-
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 """""""""""""""""""""""""""""
 " => Solarized Color Scheme
@@ -79,3 +81,8 @@ let g:auto_save_no_updatetime = 1
 set noshowmode
 set laststatus=2
 let g:airline_theme = 'solarized'
+
+""""""""""""""""""""""""""""""
+" => Enhanced Javascript Syntax
+""""""""""""""""""""""""""""""
+"au FileType javascript call JavaScriptFold()
