@@ -39,6 +39,7 @@ function color_prompt {
     CYAN="\[\033[0;36m\]"
     GREEN="\[\033[0;32m\]"
     GIT_PS1_SHOWDIRTYSTATE=true
+    CLEAR="\[\e[0m\]"
 
     export PS1=$LIGHT_GRAY"\u@\h"$BLUE" \w"'$(
         if [[ $(__git_ps1) =~ \*\)$ ]]
@@ -49,7 +50,7 @@ function color_prompt {
         then echo "'$MAGENTA'"$(__git_ps1 " (%s)")
         # the state is clean, changes are commited
         else echo "'$CYAN'"$(__git_ps1 " (%s)")
-        fi)'$GREEN" "
+        fi)'$CLEAR" "
 }
 
 color_prompt

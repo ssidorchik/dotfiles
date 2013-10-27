@@ -4,7 +4,7 @@
 	default = simple
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
 [dofftool]
