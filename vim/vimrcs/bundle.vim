@@ -25,6 +25,7 @@ NeoBundle "907th/vim-auto-save"
 NeoBundle "bling/vim-airline"
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle "wookiehangover/jshint.vim"
+NeoBundle "editorconfig/editorconfig-vim"
 
 NeoBundleCheck
 
