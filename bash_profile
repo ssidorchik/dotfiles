@@ -31,6 +31,8 @@ export PATH
 PATH="/usr/local/share/npm/bin:${PATH}"
 export PATH
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
 function color_prompt {
     MAGENTA="\[\033[0;35m\]"
     YELLOW="\[\033[0;33m\]"
