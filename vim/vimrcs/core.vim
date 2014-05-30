@@ -17,6 +17,9 @@ set backspace=indent,eol,start
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Synchronize Vim's default register and the clipboard register 
+set clipboard^=unnamed
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
