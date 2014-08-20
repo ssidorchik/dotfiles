@@ -13,7 +13,6 @@ NeoBundleFetch "Shougo/neobundle.vim"
 " => Include plugins
 " """"""""""""""""""""""""""""
 NeoBundle "altercation/vim-colors-solarized"
-NeoBundle "kien/ctrlp.vim"
 NeoBundle "scrooloose/nerdtree"
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "tpope/vim-fugitive"
@@ -26,6 +25,16 @@ NeoBundle "bling/vim-airline"
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundle "wookiehangover/jshint.vim"
 NeoBundle "editorconfig/editorconfig-vim"
+NeoBundle 'Shougo/vimproc.vim', {
+          \ 'build' : {
+          \     'windows' : 'tools\\update-dll-mingw',
+          \     'cygwin' : 'make -f make_cygwin.mak',
+          \     'mac' : 'make -f make_mac.mak',
+          \     'unix' : 'make -f make_unix.mak',
+          \    },
+          \ }
+NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/neomru.vim"
 
 NeoBundleCheck
 
@@ -41,13 +50,6 @@ map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 
-
-""""""""""""""""""""""""""""""
-" => CTRL-P
-""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components'
 
 """""""""""""""""""""""""""""
 " => Solarized Color Scheme
@@ -83,7 +85,46 @@ set noshowmode
 set laststatus=2
 let g:airline_theme = 'solarized'
 
+
 """"""""""""""""""""""""""""""
-" => Enhanced Javascript Syntax
+" => Unite
 """"""""""""""""""""""""""""""
-"au FileType javascript call JavaScriptFold()
+
+" The prefix key
+nnoremap [unite] <Nop> " (Space)
+nmap <Space> [unite]
+let g:unite_enable_start_insert = 1
+let g:unite_prompt = '▶ '
+let g:unite_source_history_yank_enable = 1
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#profile('source/grep', 'context', { 'no_quit' : 1 })
+call unite#set_profile('files', 'smartcase', 1)
+" General purpose
+nnoremap [unite]<Space> :Unite -start-insert source<CR>
+" Files
+nnoremap [unite]f :Unite -auto-resize -auto-preview -no-split file_rec/async:!<CR>
+" Grepping
+nnoremap [unite]g :Unite -auto-resize -auto-preview -no-split -auto-highlight grep:.<CR>
+nnoremap [unite]s :UniteWithCursorWord -auto-preview -no-split -auto-highlight grep:.<CR>
+" Yank history
+nnoremap [unite]y :Unite -no-split history/yank<CR>
+" Quickly switch between recent things
+nnoremap [unite]F :Unite -no-split buffer tab file_mru directory_mru<CR>
+nnoremap [unite]b :Unite -no-split buffer<CR>
+nnoremap [unite]m :Unite -no-split file_mru<CR>
+" Resume previous action
+nnoremap [unite]r :UniteResume -silent -auto-resize -immediately<CR>
+
+
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  imap <buffer> <C-j> <Plug>(unite_select_next_line)
+  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  imap <silent><buffer><expr> <C-x> unite#do_action('split')
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+  nmap <buffer> <Esc> <Plug>(unite_exit)
+endfunction
