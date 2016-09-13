@@ -2,7 +2,7 @@
 	name = Sergey Sidorchick
 	email = s.sidorchick@gmail.com
 [push]
-	default = simple
+	default = current
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
@@ -13,13 +13,15 @@
 [difftool]
 	prompt = false
 [alias]
-    st = status
-    co = checkout
-    ci = commit
-    su = submodule update
-    mt = mergetool
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-    standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+  st = status
+  co = checkout
+  ci = commit
+  su = submodule update
+  mt = mergetool
+  ro = !"git fetch origin && git rebase origin/master"
+  cleanup = !"git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git clean -fd"
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3

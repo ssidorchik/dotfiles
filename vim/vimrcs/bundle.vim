@@ -22,7 +22,7 @@ NeoBundle "ap/vim-css-color"
 NeoBundle "907th/vim-auto-save"
 NeoBundle "bling/vim-airline"
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle "ssidorchick/jshint.vim"
+"NeoBundle "ssidorchick/jshint.vim"
 NeoBundle "editorconfig/editorconfig-vim"
 NeoBundle 'Shougo/vimproc.vim', {
           \ 'build' : {
@@ -35,6 +35,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/neocomplete.vim"
+NeoBundle "scrooloose/syntastic"
+"NeoBundle "pmsorhaindo/syntastic-local-eslint.vim"
 
 NeoBundleCheck
 
@@ -211,3 +213,34 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+""""""""""""""""""""""""""""""
+" => Syntastic
+""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_javascript_checkers = ['eslint_d']
+
+"let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+"let g:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
+function! HasConfig(file, dir)
+    return findfile(a:file, escape(a:dir, ' ') . ';') !=# ''
+endfunction
+
+autocmd BufNewFile,BufReadPre *.js  let b:syntastic_checkers =
+    \ HasConfig('.eslintrc', expand('<amatch>:h')) ? ['eslint'] :
+    \ HasConfig('.jshintrc', expand('<amatch>:h')) ? ['jshint'] :
+    \     ['standard']
+
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"let g:syntastic_javascript_eslint_generic = 1
+"let g:syntastic_javascript_eslint_exec = 'xo'
+"let g:syntastic_javascript_eslint_args = '--compact'

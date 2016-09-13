@@ -6,6 +6,9 @@ alias gad='git add'
 alias gci='git commit'
 alias gps='git push'
 alias gsu='git submodule update'
+alias gro='git ro'
+alias gcl='git cleanup'
+alias giff='git diff'
 
 alias gci.='git add .; git commit'
 

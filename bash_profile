@@ -57,11 +57,7 @@ export VBOX_USER_HOME=/Volumes/Data/Profile/VirtualBox\ VMs
 
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/sergey/.docker/machine/machines/dev"
-export DOCKER_MACHINE_NAME="dev"
+export DOCKER_CERT_PATH="/Users/sergey/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
 
-export WEB_ENDPOINT=mobilewebhub.com
-
-export PEBBLE_PHONE=192.168.1.103
-
-export STAGING="True"
+export PEBBLE_PHONE=192.168.100.4
