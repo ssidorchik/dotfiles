@@ -96,41 +96,46 @@ let g:airline_theme = 'solarized'
 " => Unite
 """"""""""""""""""""""""""""""
 
-" The prefix key
-nnoremap [unite] <Nop> " (Space)
-nmap <Space> [unite]
 let g:unite_source_history_yank_enable = 1
-let g:unite_source_rec_async_command = 'ag --nocolor --nogroup -g ""'
+
+"" Config Ag and use it instead of find
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+
+" Configure Ag and use it instead of grep
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts =
 \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
 \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore ''bower_components'''
 let g:unite_source_grep_recursive_opt = ''
 
+
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#profile('default', 'context', {
-\   'direction': 'botright',
-\   'prompt': '▶ ',
+\   'start_insert': 1,
 \   'no_split': 1,
-\   'smartcase': 1
+\   'smartcase': 1,
+\   'prompt': '▶ ',
+\   'previewheight': 40,
+\   'direction': 'botright'
 \ })
 
+
 " General purpose
-nnoremap [unite]<Space> :Unite -start-insert source<CR>
+nnoremap <leader><Space> :Unite source<CR>
 " Files
-nnoremap [unite]f :Unite -start-insert -auto-preview -auto-resize file_rec/async:!<CR>
+nnoremap <leader>f :<C-u>Unite -auto-preview -auto-resize file_rec/async:!<CR>
 " Grepping
-nnoremap [unite]g :Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
-nnoremap [unite]s :UniteWithCursorWord -auto-preview -auto-highlight -auto-resize grep:.<CR>
+nnoremap <leader>g :Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
+nnoremap <leader>s :UniteWithCursorWord -auto-preview -auto-highlight -auto-resize grep:.<CR>
 " Yank history
-nnoremap [unite]y :Unite history/yank<CR>
+nnoremap <leader>y :Unite history/yank<CR>
 " Quickly switch between recent things
-nnoremap [unite]F :Unite buffer tab file_mru directory_mru<CR>
-nnoremap [unite]b :Unite buffer<CR>
-nnoremap [unite]m :Unite file_mru<CR>
+nnoremap <leader>F :Unite buffer tab file_mru directory_mru<CR>
+nnoremap <leader>b :<C-u>Unite buffer bookmark<CR>
+nnoremap <leader>m :Unite file_mru<CR>
 " Resume previous action
-nnoremap [unite]r :UniteResume -silent -auto-resize -immediately<CR>
+nnoremap <leader>r :UniteResume -silent -auto-resize -immediately<CR>
 
 
 autocmd FileType unite call s:unite_settings()
@@ -141,7 +146,8 @@ function! s:unite_settings()
   imap <silent><buffer><expr> <C-x> unite#do_action('split')
   imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-  nmap <buffer> <Esc> <Plug>(unite_exit)
+  imap <silent><buffer> <C-c> <Plug>(unite_exit)
+  nmap <silent><buffer> <C-c> <Plug>(unite_exit)
 endfunction
 
 
