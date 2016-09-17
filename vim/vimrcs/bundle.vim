@@ -37,6 +37,7 @@ NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "scrooloose/syntastic"
+NeoBundle "leafgarland/typescript-vim"
 "NeoBundle "pmsorhaindo/syntastic-local-eslint.vim"
 
 NeoBundleCheck
