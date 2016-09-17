@@ -126,16 +126,16 @@ nnoremap <leader><Space> :Unite source<CR>
 " Files
 nnoremap <leader>f :<C-u>Unite -auto-preview -auto-resize file_rec/async:!<CR>
 " Grepping
-nnoremap <leader>g :Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
-nnoremap <leader>s :UniteWithCursorWord -auto-preview -auto-highlight -auto-resize grep:.<CR>
+nnoremap <leader>g :<C-u>Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
+nnoremap <leader>s :<C-u>UniteWithCursorWord -auto-preview -auto-highlight -auto-resize grep:.<CR>
 " Yank history
-nnoremap <leader>y :Unite history/yank<CR>
+nnoremap <leader>y :<C-u>Unite history/yank<CR>
 " Quickly switch between recent things
-nnoremap <leader>F :Unite buffer tab file_mru directory_mru<CR>
+nnoremap <leader>F :<C-u>Unite buffer tab file_mru directory_mru<CR>
 nnoremap <leader>b :<C-u>Unite buffer bookmark<CR>
-nnoremap <leader>m :Unite file_mru<CR>
+nnoremap <leader>m :<C-u>Unite file_mru<CR>
 " Resume previous action
-nnoremap <leader>r :UniteResume -silent -auto-resize -immediately<CR>
+nnoremap <leader>r :<C-u>UniteResume -silent -auto-resize -immediately<CR>
 
 
 autocmd FileType unite call s:unite_settings()
