@@ -57,6 +57,12 @@ map <leader>nb :NERDTreeFromBookmark
 map <leader>nf :NERDTreeFind<cr>
 
 
+""""""""""""""""""""""""""""""
+" => Nerd Commenter
+" """"""""""""""""""""""""""""
+let NERDSpaceDelims=1
+
+
 """""""""""""""""""""""""""""
 " => Solarized Color Scheme
 """"""""""""""""""""""""""""""
