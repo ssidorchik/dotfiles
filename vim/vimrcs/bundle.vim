@@ -240,21 +240,5 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_javascript_checkers = ['eslint_d']
-
-"let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-"let g:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-function! HasConfig(file, dir)
-    return findfile(a:file, escape(a:dir, ' ') . ';') !=# ''
-endfunction
-
-autocmd BufNewFile,BufReadPre *.js  let b:syntastic_checkers =
-    \ HasConfig('.eslintrc', expand('<amatch>:h')) ? ['eslint'] :
-    \ HasConfig('.jshintrc', expand('<amatch>:h')) ? ['jshint'] :
-    \     ['standard']
-
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
-"let g:syntastic_javascript_eslint_generic = 1
-"let g:syntastic_javascript_eslint_exec = 'xo'
-"let g:syntastic_javascript_eslint_args = '--compact'

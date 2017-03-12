@@ -72,7 +72,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 nnoremap <leader>x <C-w>c
-nnoremap <leader>o :copen<CR>
+nnoremap <leader>o :lopen<CR>
 
 
 " Setting up the usage of Alt/Option key
