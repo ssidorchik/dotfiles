@@ -23,7 +23,6 @@ NeoBundle "907th/vim-auto-save"
 NeoBundle "vim-airline/vim-airline"
 NeoBundle "vim-airline/vim-airline-themes"
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-"NeoBundle "ssidorchick/jshint.vim"
 NeoBundle "editorconfig/editorconfig-vim"
 NeoBundle 'Shougo/vimproc.vim', {
           \ 'build' : {
@@ -38,7 +37,7 @@ NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "leafgarland/typescript-vim"
-"NeoBundle "pmsorhaindo/syntastic-local-eslint.vim"
+NeoBundle "Quramy/tsuquyomi"
 
 NeoBundleCheck
 
@@ -220,13 +219,11 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 
 
 """"""""""""""""""""""""""""""
@@ -242,3 +239,10 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+
+""""""""""""""""""""""""""""""
+" => Tsuquyomi
+""""""""""""""""""""""""""""""
+let g:tsuquyomi_disable_quickfix = 1
