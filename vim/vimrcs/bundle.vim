@@ -22,7 +22,8 @@ NeoBundle "ap/vim-css-color"
 NeoBundle "907th/vim-auto-save"
 NeoBundle "vim-airline/vim-airline"
 NeoBundle "vim-airline/vim-airline-themes"
-NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 NeoBundle "editorconfig/editorconfig-vim"
 NeoBundle 'Shougo/vimproc.vim', {
           \ 'build' : {
@@ -35,7 +36,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle "Shougo/unite.vim"
 NeoBundle "Shougo/neomru.vim"
 NeoBundle "Shougo/neocomplete.vim"
-NeoBundle "scrooloose/syntastic"
+NeoBundle "vim-syntastic/syntastic"
 NeoBundle "leafgarland/typescript-vim"
 NeoBundle "Quramy/tsuquyomi"
 
@@ -96,6 +97,31 @@ let g:auto_save_in_insert_mode = 0
 set noshowmode
 set laststatus=2
 let g:airline_theme = 'solarized'
+
+
+""""""""""""""""""""""""""""""
+" =>  vim-javascript
+""""""""""""""""""""""""""""""
+let g:javascript_plugin_flow = 1
+
+let g:javascript_conceal_function                  = "ƒ"
+let g:javascript_conceal_null                      = "ø"
+let g:javascript_conceal_this                      = "@"
+let g:javascript_conceal_return                    = "⇚"
+let g:javascript_conceal_undefined                 = "¿"
+let g:javascript_conceal_NaN                       = "ℕ"
+let g:javascript_conceal_prototype                 = "¶"
+let g:javascript_conceal_static                    = "•"
+let g:javascript_conceal_super                     = "Ω"
+let g:javascript_conceal_arrow_function            = "⇒"
+let g:javascript_conceal_noarg_arrow_function      = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+
+
+""""""""""""""""""""""""""""""
+" => vim-jsx
+""""""""""""""""""""""""""""""
+let g:jsx_ext_required = 0
 
 
 """"""""""""""""""""""""""""""
@@ -237,8 +263,11 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
+" Commented configuration left for projects without configured eslint flow plugin
+" let g:syntastic_javascript_flow_exe = 'flow'
+" let g:syntastic_javascript_checkers = ['eslint', 'flow']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 

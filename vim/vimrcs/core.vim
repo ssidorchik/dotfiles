@@ -74,6 +74,10 @@ nnoremap <A-l> <C-w>l
 nnoremap <leader>x <C-w>c
 nnoremap <leader>o :lopen<CR>
 
+" Enable concealing
+set conceallevel=1
+nnoremap <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
 
 " Setting up the usage of Alt/Option key
 " (do not forget to enable 'Use option as meta key' in OS X terminal preferences)
