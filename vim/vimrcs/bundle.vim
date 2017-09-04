@@ -1,48 +1,49 @@
 """"""""""""""""""""""""""""""
-" => NeoBundle
+" => dein
 " """"""""""""""""""""""""""""
-if has("vim_starting")
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/neomru.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('907th/vim-auto-save')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('vim-syntastic/syntastic')
+  call dein#add('tpope/vim-fugitive')
+
+  call dein#add('slim-template/vim-slim')
+
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
+
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('Quramy/tsuquyomi')
+
+  call dein#add('ap/vim-css-color')
+  call dein#add('groenewege/vim-less')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+
+  if dein#check_install()
+    call dein#install()
+  endif
 endif
-
-call neobundle#begin(expand("~/.vim/bundle/"))
-NeoBundleFetch "Shougo/neobundle.vim"
-
-
-""""""""""""""""""""""""""""""
-" => Include plugins
-" """"""""""""""""""""""""""""
-NeoBundle "altercation/vim-colors-solarized"
-NeoBundle "scrooloose/nerdtree"
-NeoBundle "scrooloose/nerdcommenter"
-NeoBundle "tpope/vim-fugitive"
-NeoBundle "groenewege/vim-less"
-NeoBundle "slim-template/vim-slim"
-NeoBundle "ap/vim-css-color"
-NeoBundle "907th/vim-auto-save"
-NeoBundle "vim-airline/vim-airline"
-NeoBundle "vim-airline/vim-airline-themes"
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle "editorconfig/editorconfig-vim"
-NeoBundle 'Shougo/vimproc.vim', {
-          \ 'build' : {
-          \     'windows' : 'tools\\update-dll-mingw',
-          \     'cygwin' : 'make -f make_cygwin.mak',
-          \     'mac' : 'make -f make_mac.mak',
-          \     'unix' : 'make -f make_unix.mak',
-          \    },
-          \ }
-NeoBundle "Shougo/unite.vim"
-NeoBundle "Shougo/neomru.vim"
-NeoBundle "Shougo/neocomplete.vim"
-NeoBundle "vim-syntastic/syntastic"
-NeoBundle "leafgarland/typescript-vim"
-NeoBundle "Quramy/tsuquyomi"
-
-NeoBundleCheck
-
-call neobundle#end()
 
 
 """ Plugins configuration """"
