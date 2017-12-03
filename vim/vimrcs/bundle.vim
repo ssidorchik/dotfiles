@@ -30,7 +30,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
 
-  call dein#add('leafgarland/typescript-vim')
+  " TODO: Enable when conflict resolved:
+  " https://github.com/leafgarland/typescript-vim/issues/126
+  " call dein#add('leafgarland/typescript-vim')
   call dein#add('Quramy/tsuquyomi')
 
   call dein#add('ap/vim-css-color')
