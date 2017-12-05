@@ -48,9 +48,5 @@ export PATH
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export VBOX_USER_HOME=/Volumes/Data/Profile/VirtualBox\ VMs
