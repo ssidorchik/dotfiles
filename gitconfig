@@ -1,17 +1,17 @@
 [user]
-	name = Sergey Sidorchick
-	email = s.sidorchick@gmail.com
+  name = Sergey Sidorchik
+  email = s.sidorchick@gmail.com
 [push]
-	default = current
+  default = current
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
+  editor = vim
+  excludesfile = ~/.gitignore
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [dofftool]
-	prompt = false
+  prompt = false
 [difftool]
-	prompt = false
+  prompt = false
 [alias]
   st = status
   co = checkout
@@ -22,6 +22,12 @@
   cleanup = !"git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d && git remote prune origin && git clean -fd"
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+  slist =  "stash list"
+  ssave =  "!f() { git stash push -m ${1}; }; f"
+  sshow =  "!f() { git stash show  `git stash list | grep ${1} -w | head -1 | awk '{print $1}' | sed 's/:$//'` -p; }; f"
+  sapply = "!f() { git stash apply `git stash list | grep ${1} -w | head -1 | awk '{print $1}' | sed 's/:$//'`; }; f"
+  spop =   "!f() { git stash pop   `git stash list | grep ${1} -w | head -1 | awk '{print $1}' | sed 's/:$//'`; }; f"
+  sdrop =  "!f() { git stash drop  `git stash list | grep ${1} -w | head -1 | awk '{print $1}' | sed 's/:$//'`; }; f"
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+  tool = vimdiff
+  conflictstyle = diff3
