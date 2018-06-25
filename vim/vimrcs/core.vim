@@ -22,6 +22,9 @@ set autoread
 " Synchronize Vim's default register and the clipboard register 
 set clipboard^=unnamed
 
+" Disable cursor styling
+set guicursor=
+
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -76,13 +79,15 @@ nnoremap <A-l> <C-w>l
 nnoremap <leader>x <C-w>c
 nnoremap <leader>o :lopen<CR>
 
-" Setting up the usage of Alt/Option key
-" (do not forget to enable 'Use option as meta key' in OS X terminal preferences)
-let c='a'
-while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
-endw
+if !has('nvim')
+  " Setting up the usage of Alt/Option key
+  " (do not forget to enable 'Use option as meta key' in OS X terminal preferences)
+  let c='a'
+  while c <= 'z'
+      exec "set <A-".c.">=\e".c
+      exec "imap \e".c." <A-".c.">"
+      let c = nr2char(1+char2nr(c))
+  endw
+endif
 
 set timeout ttimeoutlen=50

@@ -27,7 +27,10 @@ if dein#load_state('~/.cache/dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('vim-syntastic/syntastic')
+
   call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-rhubarb')
+  call dein#add('junegunn/gv.vim')
 
   call dein#add('slim-template/vim-slim')
 
@@ -88,6 +91,14 @@ call togglebg#map("<F5>")
 map <leader>gc :Gread<CR>
 map <leader>ga :Gwrite<CR>
 map <leader>gr :Gremove<CR>
+
+
+""""""""""""""""""""""""""""""
+" => GV
+""""""""""""""""""""""""""""""
+map <leader>gl :GV<CR>
+map <leader>gf :GV!<CR>
+map <leader>gv :GV?<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -152,7 +163,7 @@ nnoremap <leader><Space> :Unite source<CR>
 " Files
 nnoremap <leader>f :<C-u>Unite -auto-preview -auto-resize file_rec/async:!<CR>
 " Grepping
-nnoremap <leader>g :<C-u>Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
+nnoremap <leader>a :<C-u>Unite -auto-preview -auto-highlight -auto-resize grep:.<CR>
 nnoremap <leader>s :<C-u>UniteWithCursorWord -auto-preview -auto-highlight -auto-resize grep:.<CR>
 " Yank history
 nnoremap <leader>y :<C-u>Unite history/yank<CR>
