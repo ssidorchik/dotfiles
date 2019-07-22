@@ -12,10 +12,10 @@ alias giff='git diff'
 alias gci.='git add .; git commit'
 
 alias gsl='git slist'
-alias gsa='git ssave'
+alias gss='git ssave'
 alias gsh='git sshow'
-alias gsp='git sapply'
-alias gspo='git spop'
+alias gsa='git sapply'
+alias gsp='git spop'
 alias gsd='git sdrop'
 
 

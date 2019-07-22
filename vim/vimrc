@@ -1,2 +1,4 @@
 source ~/.vim/vimrcs/core.vim
+" source ~/.vim/vimrcs/extensions/autoread.vim
+source ~/.vim/vimrcs/extensions/alt_key.vim
 source ~/.vim/vimrcs/bundle.vim

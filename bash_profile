@@ -30,31 +30,35 @@ function color_prompt {
 color_prompt
 
 
-include () {
+graceful_include () {
   [[ -f "$1" ]] && source "$1"
 }
 
-include /usr/local/etc/bash_completion.d/git-completion.bash
-include /usr/local/etc/bash_completion.d/git-prompt.sh
+. /usr/local/etc/bash_completion.d/git-completion.bash
+. /usr/local/etc/bash_completion.d/git-prompt.sh
 
-include /usr/share/bash-completion/completions/git
-include /usr/lib/git-core/git-sh-prompt
+. ~/.bash_aliases
 
-include ~/.bash_aliases
+export PATH="/usr/local/bin:${PATH}"
 
-PATH="/usr/local/bin:${PATH}"
-export PATH
+# Loads rbenv
+eval "$(rbenv init -)"
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$PATH:$HOME/.rvm/bin"
+# Loads pyenv
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export DEDICATED_DOCKER_DISK=1
-export DOCKER_NETWORK_PARAVIRTUALIZED=true
-export SSH_USER=ssidorchik
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
 
-include "$HOME/.zendesk_billing"
+graceful_include "$HOME/.company_profile"
+
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"

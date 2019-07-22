@@ -16,9 +16,6 @@ filetype indent on
 " Configure backspace to work properly on OS X
 set backspace=indent,eol,start
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
 " Synchronize Vim's default register and the clipboard register 
 set clipboard^=unnamed
 
@@ -79,15 +76,10 @@ nnoremap <A-l> <C-w>l
 nnoremap <leader>x <C-w>c
 nnoremap <leader>o :lopen<CR>
 
-if !has('nvim')
-  " Setting up the usage of Alt/Option key
-  " (do not forget to enable 'Use option as meta key' in OS X terminal preferences)
-  let c='a'
-  while c <= 'z'
-      exec "set <A-".c.">=\e".c
-      exec "imap \e".c." <A-".c.">"
-      let c = nr2char(1+char2nr(c))
-  endw
-endif
-
 set timeout ttimeoutlen=50
+
+" Rename word under cursor
+nnoremap <leader>rr :%s/\<<C-r><C-w>\>/
+
+" Set path to Python executable
+let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
