@@ -149,6 +149,11 @@ call deoplete#custom#option({
 " => ale
 """"""""""""""""""""""""""""""
 let b:ale_linters = ['eslint']
+let b:ale_fixers = ['eslint']
+let g:ale_linters_ignore = {
+\ 'javascript': ['tsserver'],
+\ 'javascript.jsx': ['tsserver'],
+\}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
