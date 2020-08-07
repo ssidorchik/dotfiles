@@ -163,6 +163,7 @@ let g:airline#extensions#ale#enabled = 1
 """"""""""""""""""""""""""""""
 " => LeaderF
 """"""""""""""""""""""""""""""
+let g:Lf_UseCache = 0
 let g:Lf_WindowHeight = 0.2
 let g:Lf_PreviewResult = {
 \ 'File': 1,
