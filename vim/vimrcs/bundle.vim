@@ -25,6 +25,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('w0rp/ale')
   call dein#add('Yggdroot/LeaderF', {'build': './install.sh'})
   call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('ryanoasis/vim-devicons')
 
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-rhubarb')
@@ -119,6 +120,7 @@ let g:auto_save_in_insert_mode = 0
 set noshowmode
 set laststatus=2
 let g:airline_theme = 'solarized'
+let g:airline_powerline_fonts = 1
 
 
 """"""""""""""""""""""""""""""
@@ -175,6 +177,7 @@ let g:Lf_PreviewResult = {
 \ 'Line': 1,
 \ 'Colorscheme': 0
 \}
+let g:Lf_ShowDevIcons = 1
 nmap <leader>s <Plug>LeaderfRgCwordLiteralNoBoundary<CR>
 noremap <leader>a :<C-U><C-R>=printf("Leaderf rg -e ")<CR>
 noremap <leader>r :<C-U>Leaderf rg --stayOpen --recall<CR>

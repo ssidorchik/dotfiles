@@ -6,6 +6,8 @@ syntax on
 
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf8
+
 " Sets how many lines of history VIM has to remember
 set history=700
 
