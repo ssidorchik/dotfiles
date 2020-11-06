@@ -56,7 +56,7 @@ syntax enable
 
 " If you want to install not installed plugins on startup.
 if dein#check_install()
- call dein#install()
+  call dein#install()
 endif
 
 
@@ -151,7 +151,7 @@ call deoplete#custom#option({
 " => ale
 """"""""""""""""""""""""""""""
 let b:ale_linters = ['eslint']
-let b:ale_fixers = ['eslint']
+let b:ale_fixers = ['eslint', 'prettier']
 let g:ale_linters_ignore = {
 \ 'javascript': ['tsserver'],
 \ 'javascript.jsx': ['tsserver'],

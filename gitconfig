@@ -1,6 +1,8 @@
 [user]
   name = Sergey Sidorchik
   email = s.sidorchick@gmail.com
+[pull]
+  rebase = true
 [push]
   default = current
 [core]
