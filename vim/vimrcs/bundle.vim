@@ -161,6 +161,8 @@ let g:ale_sign_warning = '⚠'
 
 let g:airline#extensions#ale#enabled = 1
 
+noremap <leader>ff :<C-U>ALEFix prettier<CR>
+
 
 """"""""""""""""""""""""""""""
 " => LeaderF
