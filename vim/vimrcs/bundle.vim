@@ -165,8 +165,14 @@ let g:airline#extensions#ale#enabled = 1
 """"""""""""""""""""""""""""""
 " => LeaderF
 """"""""""""""""""""""""""""""
+let g:Lf_ShowHidden = 1
+let g:Lf_PreviewInPopup = 1
+
+let g:Lf_PopupHeight = 0.2
+let g:Lf_PopupWidth = 0.5
+let g:Lf_WindowPosition = 'popup'
+
 let g:Lf_UseCache = 0
-let g:Lf_WindowHeight = 0.2
 let g:Lf_PreviewResult = {
 \ 'File': 1,
 \ 'Buffer': 0,
@@ -177,7 +183,6 @@ let g:Lf_PreviewResult = {
 \ 'Line': 1,
 \ 'Colorscheme': 0
 \}
-let g:Lf_ShowDevIcons = 1
 nmap <leader>s <Plug>LeaderfRgCwordLiteralNoBoundary<CR>
 noremap <leader>a :<C-U><C-R>=printf("Leaderf rg -e ")<CR>
 noremap <leader>r :<C-U>Leaderf rg --stayOpen --recall<CR>
