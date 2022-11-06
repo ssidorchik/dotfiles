@@ -14,7 +14,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('nixprime/cpsm', {'build': 'sh -c "PY3=ON ./install.sh"'})
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('scrooloose/nerdtree')
@@ -23,9 +22,11 @@ if dein#load_state('~/.cache/dein')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('w0rp/ale')
-  call dein#add('Yggdroot/LeaderF', {'build': './install.sh'})
+  call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.x' })
+  call dein#add('nvim-lua/plenary.nvim')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
   call dein#add('ryanoasis/vim-devicons')
+  call dein#add('tpope/vim-obsession')
 
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-rhubarb')
@@ -37,9 +38,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('mxw/vim-jsx')
 
   call dein#add('leafgarland/typescript-vim')
-  " TODO: Update to master when issue resolved
-  " https://github.com/leafgarland/typescript-vim/issues/126
-  " call dein#add('Quramy/tsuquyomi', {'rev': 'v0.7.0'})
+  call dein#add('Quramy/tsuquyomi')
 
   call dein#add('ap/vim-css-color')
   call dein#add('groenewege/vim-less')
@@ -150,11 +149,15 @@ call deoplete#custom#option({
 """"""""""""""""""""""""""""""
 " => ale
 """"""""""""""""""""""""""""""
-let b:ale_linters = ['eslint']
+" let b:ale_linters = ['eslint']
+let g:ale_linters = {
+\ 'typescript': ['eslint', 'tsserver', 'typecheck'],
+\ 'javascript': ['eslint']
+\}
 let b:ale_fixers = ['eslint', 'prettier']
 let g:ale_linters_ignore = {
-\ 'javascript': ['tsserver'],
-\ 'javascript.jsx': ['tsserver'],
+\ 'javascript': ['jshint', 'tsserver'],
+\ 'javascript.jsx': ['jshint', 'tsserver'],
 \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
@@ -165,30 +168,53 @@ noremap <leader>ff :<C-U>ALEFix prettier<CR>
 
 
 """"""""""""""""""""""""""""""
-" => LeaderF
+" => Telescope
 """"""""""""""""""""""""""""""
-let g:Lf_ShowHidden = 1
-let g:Lf_PreviewInPopup = 1
+" Find files using Telescope command-line sugar.
+lua << EOF
+local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
+local previewers = require("telescope.previewers")
 
-let g:Lf_PopupHeight = 0.2
-let g:Lf_PopupWidth = 0.5
-let g:Lf_WindowPosition = 'popup'
+local new_maker = function(filepath, bufnr, opts)
+  opts = opts or {}
 
-let g:Lf_UseCache = 0
-let g:Lf_PreviewResult = {
-\ 'File': 1,
-\ 'Buffer': 0,
-\ 'Mru': 0,
-\ 'Tag': 0,
-\ 'BufTag': 1,
-\ 'Function': 1,
-\ 'Line': 1,
-\ 'Colorscheme': 0
-\}
-nmap <leader>s <Plug>LeaderfRgCwordLiteralNoBoundary<CR>
-noremap <leader>a :<C-U><C-R>=printf("Leaderf rg -e ")<CR>
-noremap <leader>r :<C-U>Leaderf rg --stayOpen --recall<CR>
-xnoremap <leader>s :<C-U><C-R>=printf("Leaderf rg -F --stayOpen -e %s ", leaderf#Rg#visual())<CR><CR>
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > 100000 then
+      return
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
+end
+
+require('telescope').setup{
+  defaults = {
+    buffer_previewer_maker = new_maker,
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<M-p>"] = action_layout.toggle_preview,
+        -- Clears prompt
+        ["<C-u>"] = false
+      },
+      n = {
+        ["<M-p>"] = action_layout.toggle_preview
+      },
+    },
+  }
+}
+EOF
+
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>a <cmd>Telescope live_grep<cr>
+nnoremap <leader>s <cmd>Telescope grep_string<cr>
+nnoremap <leader>r <cmd>Telescope resume<cr>
+nnoremap <leader>q <cmd>Telescope loclist<cr>
+nnoremap <leader>ss <cmd>Telescope spell_suggest<cr>
 
 
 """"""""""""""""""""""""""""""

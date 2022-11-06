@@ -82,6 +82,3 @@ set timeout ttimeoutlen=50
 
 " Rename word under cursor
 nnoremap <leader>rr :%s/\<<C-r><C-w>\>/
-
-" Set path to Python executable
-let g:python3_host_prog = '/usr/local/opt/python/libexec/bin/python'
